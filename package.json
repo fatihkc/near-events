@@ -1,0 +1,24 @@
+{
+  "name": "near-events",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/fatihkc/near-events.git",
+  "author": "Fatih Koç <fatih.koc@ftechlabs.com>",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "scripts": {
+    "build:release": "asb",
+    "deploy": "near dev-deploy build/release/near-events.wasm",
+    "dev": "yarn build:release && yarn deploy",
+    "test": "asp"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.20.4"
+  }
+}
