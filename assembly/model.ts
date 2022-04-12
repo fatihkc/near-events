@@ -1,5 +1,5 @@
-import { Context, PersistentUnorderedMap, math, context } from "near-sdk-as";
-import { AccountId } from "../utils";
+import { PersistentUnorderedMap, math, context, u128 } from "near-sdk-as";
+import { AccountId, Money } from "../utils";
 export const events = new PersistentUnorderedMap<u32, Event>("events");
 
 @nearBindgen
@@ -15,6 +15,7 @@ export class Event {
   tag: string;
   detail: string;
   IsDonatable: boolean;
+  donation: u128;
 
   constructor(organizor: AccountId, name: string, tag: string, detail: string, IsDonatable: boolean) {
     this.organizor = this.organizor;
@@ -23,6 +24,7 @@ export class Event {
     this.tag = tag;
     this.detail = detail;
     this.IsDonatable = IsDonatable;
+    this.donation = u128.Zero;
   }
 
   static addEvent(organizor: AccountId, name: string,tag: string, detail: string, IsDonatable: boolean ): Event {
@@ -49,6 +51,16 @@ export class Event {
 
   static findByIdAndDelete(id: u32): void {
     events.delete(id);
+  }
+
+  static findOwner(id: u32): AccountId {
+    return Event.findById(id).organizor;
+  }
+
+  static donate(organizer: AccountId, id: u32, amount: u128): void {
+    const event = Event.findById(id);
+    this.findOwner(id);
+    
   }
 
 }
