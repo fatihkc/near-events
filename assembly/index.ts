@@ -1,7 +1,9 @@
+import { Context } from "near-sdk-as";
 import { Event, PartialEvent } from "./model";
 
-export function create(name: string,tag: string,detail: string): Event {
-  return Event.addEvent(name,tag,detail);
+export function create(name: string,tag: string,detail: string, IsDonatable: boolean): Event {
+  const organizer = Context.sender;
+  return Event.addEvent(organizer,name,tag,detail, IsDonatable);
 }
 
 export function getById(id: u32): Event {
