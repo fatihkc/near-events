@@ -43,7 +43,7 @@ export class Events {
   }
 
   private transfer(event: Event, donation: u128): void {
-    this.assert_auction_owner(event);
+    this.assert_organizer(event);
 
     const to_self = Context.contractName;
     const to_organizer = ContractPromiseBatch.create(event.organizor);
@@ -53,8 +53,8 @@ export class Events {
     promise.then(to_self).function_call('on_transfer_complete', '{}', u128.Zero, XCC_GAS);
   }
 
-  private assert_auction_owner(event: Event): void {
-    assert(Context.sender == event.organizor, 'Only the owner of this auction may call this method');
+  private assert_organizer(event: Event): void {
+    assert(Context.sender == event.organizor, 'Only the organizer may call this method');
   }
 
 }
