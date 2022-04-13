@@ -1,4 +1,4 @@
-# NEAR Meet
+# NEAR Events
 
 Explore events about NEAR ecosystem! Both online and on-site events can use this smart contract for advertisement and collect donations! Donations are optional.
 
