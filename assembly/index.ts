@@ -44,10 +44,9 @@ export class Events {
 
   private transfer(event: Event, donation: u128): void {
     this.assert_organizer(event);
-
+    event.donation = donation;
     const to_self = Context.contractName;
     const to_organizer = ContractPromiseBatch.create(event.organizor);
-
     // transfer earnings to owner then confirm transfer complete
     const promise = to_organizer.transfer(event.donation);
     promise.then(to_self).function_call('on_transfer_complete', '{}', u128.Zero, XCC_GAS);
