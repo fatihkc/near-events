@@ -15,7 +15,7 @@ export class Event {
   tag: string;
   detail: string;
   IsDonatable: boolean;
-  donation: Money;
+  donation: u8;
 
   constructor(organizor: AccountId, name: string, tag: string, detail: string, IsDonatable: boolean) {
     this.organizor = this.organizor;
@@ -24,7 +24,6 @@ export class Event {
     this.tag = tag;
     this.detail = detail;
     this.IsDonatable = IsDonatable;
-    this.donation = context.attachedDeposit;
   }
 
   static addEvent(organizor: AccountId, name: string,tag: string, detail: string, IsDonatable: boolean ): Event {

@@ -1,6 +1,6 @@
 import { Context, u128, ContractPromiseBatch, logging } from "near-sdk-as";
-import { Event, events, PartialEvent } from "./model";
-import { AccountId, Money, XCC_GAS, assert_self, assert_single_promise_success } from "../utils";
+import { Event, PartialEvent } from "./model";
+import { XCC_GAS, assert_self, assert_single_promise_success, toYocto } from "../utils";
 
 export class Events {
   create(name: string,tag: string,detail: string, IsDonatable: boolean): Event {
@@ -28,7 +28,7 @@ export class Events {
     Event.findByIdAndDelete(id);
   }
 
-  donate(id: u32, amount: u128): void {
+  donate(id: u32, amount: u8): void {
     const event = Event.findById(id);
     this.transfer(event,amount);
   }
@@ -40,12 +40,12 @@ export class Events {
     logging.log("transfer completed succesfully")
   }
 
-  private transfer(event: Event, donation: u128): void {
+  private transfer(event: Event, donation: u8): void {
     this.assert_donatable(event);
-    event.donation = donation;
+    const amount = toYocto(donation);
     const to_self = Context.contractName;
     const to_organizer = ContractPromiseBatch.create(event.organizor);
-    const promise = to_organizer.transfer(event.donation);
+    const promise = to_organizer.transfer(amount);
     promise.then(to_self).function_call('on_transfer_complete', '{}', u128.Zero, XCC_GAS);
   }
 

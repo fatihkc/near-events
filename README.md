@@ -39,4 +39,4 @@ Delete second event
 
 Donate 1 NEAR to first event
 
-    near call $CONTRACT donate '{"id":188421397,"amount":"1000000000000000000000000"}' --accountId fatihkoc.testnet
+    near call $CONTRACT donate '{"id":188421397,"amount":2}' --accountId b.fatihkoc.testnet
