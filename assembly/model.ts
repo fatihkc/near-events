@@ -56,9 +56,4 @@ export class Event {
   static findOwner(id: u32): AccountId {
     return Event.findById(id).organizor;
   }
-
-  static donate(organizer: AccountId, id: u32, amount: u128): void {
-    const event = Event.findById(id);
-    this.findOwner(id);
-  }
 }

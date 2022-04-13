@@ -37,11 +37,11 @@ export class Events {
   on_transfer_complete(): void {
     assert_self()
     assert_single_promise_success()
-
     logging.log("transfer completed succesfully")
   }
 
   private transfer(event: Event, donation: u128): void {
+    this.assert_donatable(event);
     event.donation = donation;
     const to_self = Context.contractName;
     const to_organizer = ContractPromiseBatch.create(event.organizor);
@@ -51,6 +51,10 @@ export class Events {
 
   private assert_organizer(event: Event): void {
     assert(Context.sender == event.organizor, 'Only the organizer may call this method');
+  }
+
+  private assert_donatable(event: Event): void {
+    assert(event.IsDonatable, 'This event is not donatable');
   }
 
 }
