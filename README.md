@@ -6,6 +6,7 @@ Explore events about NEAR ecosystem! Both online and on-site events can use this
 
 Let's deploy smart contract
 
+    yarn
     yarn build:release
     near dev-deploy build/release/near-events.wasm
     export CONTRACT=dev-***-***
