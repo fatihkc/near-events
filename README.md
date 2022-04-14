@@ -2,6 +2,9 @@
 
 Explore events about NEAR ecosystem! Both online and on-site events can use this smart contract for advertisement and collect donations! Donations are optional.
 
+Click below for loom video! 
+[![Near Events](https://coin-net.com/wp-content/uploads/2021/12/near-protocol.png)](https://www.loom.com/share/f922cd2b18d942d397004525a1bc30a9 "Link Title")
+
 ## Build project
 
 Let's deploy smart contract
