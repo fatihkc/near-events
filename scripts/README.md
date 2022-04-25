@@ -32,7 +32,8 @@
 - Example usage
 
     bash scripts/dev-deploy.sh
-    # bash create-list-event.sh name tag detail isDonatable subaccount(or main account)
-    bash create-list-event.sh NearCON blockchain eventdetails true fatihkoc.testnet
-    bash donate.sh
-    bash cleanup.sh
+    # bash create-list-event.sh name tag detail isDonatable subaccount(or main)
+    bash scripts/create-list-event.sh NearCON blockchain eventdetails true fatihkoc.testnet
+    # bash scripts/donate.sh event-id amount subaccount(or main)
+    bash scripts/donate.sh 188421397 1 fatihkoc.testnet
+    bash scripts/cleanup.sh

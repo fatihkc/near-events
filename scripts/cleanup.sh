@@ -28,6 +28,6 @@ echo "Step 2: Clean up project folders"
 echo ---------------------------------------------------------
 echo
 
-
+rm -rf neardev
 
 exit 0
