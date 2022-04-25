@@ -10,9 +10,12 @@ Click below for loom video!
 Let's deploy smart contract
 
     yarn
+    yarn add @assemblyscript/loader@latest assemblyscript@latest asbuild near-cli near-sdk-as
     yarn build:release
     near dev-deploy build/release/near-events.wasm
     export CONTRACT=dev-***-***
+
+You can also check scripts folder!
 
 ## Create Subaccount
 
@@ -35,7 +38,7 @@ Get one by id
 
 Get all events
 
-    near view $CONTRACT get '{"offset":0}' --accountId fatihkoc.net
+    near view $CONTRACT get '{"offset":0}' --accountId fatihkoc.testnet
 
 Delete second event
 
